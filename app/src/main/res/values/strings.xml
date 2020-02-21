@@ -4,4 +4,5 @@
     <string name="add">Add</string>
     <string name="delete_place_message">Delete %1$s?</string>
     <string name="delete_dialog_title">Delete Place</string>
+    <string name="visit_reason">Why do you want to visit?</string>
 </resources>

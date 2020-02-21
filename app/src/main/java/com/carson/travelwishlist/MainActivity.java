@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
 
     private Button mAddButton;
     private EditText mNewPlaceNameEditText;
+    private EditText mWhyVisit;
 
     private List<Place> mPlaces;
     @Override
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
         mWishListRecyclerView =findViewById(R.id.wish_list);
         mAddButton = findViewById(R.id.add_place_button);
         mNewPlaceNameEditText = findViewById(R.id.new_place_name);
+        mWhyVisit = findViewById(R.id.whyVisitTextView);
 
         mWishListRecyclerView.setHasFixedSize(true);
 
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
             @Override
             public void onClick(View view) {
                 String newPlace = mNewPlaceNameEditText.getText().toString();
-                if (newPlace.isEmpty()) {
+                String newReason = mWhyVisit.getText().toString();
+                if (newPlace.isEmpty() && newReason.isEmpty()) {
 
                     return;
                 }
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
                 mPlaces.add(new Place(newPlace));
                 mAdapter.notifyItemInserted(mPlaces.size() - 1);
                 mNewPlaceNameEditText.getText().clear();
+                mWhyVisit.getText().clear();
             }
         });
     }

@@ -28,6 +28,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
         LinearLayout layout;
         TextView nameTextView;
         TextView dateCreatedTextView;
+        TextView whyVisitTextView;
         WishListClickListener listener;
 
         WishListViewHolder(LinearLayout layout, WishListClickListener listener){
@@ -36,6 +37,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
             this.layout = layout;
             nameTextView = layout.findViewById(R.id.placeNameTextView);
             dateCreatedTextView = layout.findViewById(R.id.dateCreatedTextView);
+            whyVisitTextView = layout.findViewById(R.id.whyVisitTextView);
             layout.setOnClickListener(this);
             layout.setOnLongClickListener(this);
         }
