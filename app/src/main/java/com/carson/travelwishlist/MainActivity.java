@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
     private Button mAddButton;
     private EditText mNewPlaceNameEditText;
 
-    private List<String> mPlaces;
+    private List<Place> mPlaces;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
         mLayoutManager = new LinearLayoutManager(this);
         mWishListRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new WishListAdapter(mPlaces, this);
+        mAdapter = new WishListAdapter(mPlaces,this);
         mWishListRecyclerView.setAdapter(mAdapter);
 
         mAddButton.setOnClickListener(new View.OnClickListener(){
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
                     return;
                 }
 
-                mPlaces.add(newPlace);
+                mPlaces.add(new Place(newPlace));
                 mAdapter.notifyItemInserted(mPlaces.size() - 1);
                 mNewPlaceNameEditText.getText().clear();
             }
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
 
     @Override
     public void onListClick(int position) {
-        String place = mPlaces.get(position);
-        Uri locationUri = Uri.parse("geo:0, 0?q=" + place);
+        Place place = mPlaces.get(position);
+        Uri locationUri = Uri.parse("geo:0, 0?q=" + Uri.encode(place.getName()));
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
