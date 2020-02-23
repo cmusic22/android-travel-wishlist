@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity implements WishListClickList
             public void onClick(View view) {
                 String newPlace = mNewPlaceNameEditText.getText().toString();
                 String newReason = mWhyVisit.getText().toString();
-                if (newPlace.isEmpty() && newReason.isEmpty()) {
+                if (newPlace.isEmpty()) {
 
                     return;
                 }
 
-                mPlaces.add(new Place(newPlace));
+                mPlaces.add(new Place(newPlace, newReason));
                 mAdapter.notifyItemInserted(mPlaces.size() - 1);
                 mNewPlaceNameEditText.getText().clear();
                 mWhyVisit.getText().clear();

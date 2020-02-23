@@ -8,7 +8,7 @@ public class Place {
     private Date dateCreated;
     private String reason;
 
-    Place(String name){
+    Place(String name, String reason){
         this.name = name;
         this.dateCreated = new Date();
         this.reason = reason;
@@ -20,5 +20,5 @@ public class Place {
     public String getDateCreated(){
         return DateFormat.getDateInstance().format(dateCreated);
     }
-    public String getReason() {return name;}
+    public String getReason() {return reason;}
 }

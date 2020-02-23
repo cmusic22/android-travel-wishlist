@@ -75,6 +75,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
         Place place = data.get(position);
         holder.nameTextView.setText(place.getName());
         holder.dateCreatedTextView.setText("Created on " + place.getDateCreated());
+        holder.whyVisitTextView.setText(place.getReason());
 
     }
 
